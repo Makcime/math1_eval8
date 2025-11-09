@@ -1,5 +1,5 @@
 % Content of the question, e.g.,
-\question[12]
+\ifeabs{\question[8]}{\question[12]}
 
 
 \textbf{EFFECTUE} les divisions euclidiennes suivantes.
@@ -8,26 +8,40 @@
 
 \setlength{\tabcolsep}{0.9em}
 \renewcommand{\arraystretch}{1.2}
-\begin{center}
-	\begin{tabular}{>{\centering\arraybackslash}p{0.27\textwidth}|>{\centering\arraybackslash}p{0.27\textwidth}|>{\centering\arraybackslash}p{0.27\textwidth}}
-		$\versions{784 : 6}{684 : 4}{563 : 3}{777 : 6}$        &
-		$\versions{9631 : 8}{7123 : 5}{8472 : 9}{9050 : 4}$    &
-		$\versions{5123 : 9}{4950 : 7}{6544 : 12}{6217 : 3}$ \tabularnewline[7.5cm]
-		Q = \corrr{\versions{130}{171}{187}{129}}{\dotfill}    &
-		Q = \corrr{\versions{1203}{1424}{941}{2262}}{\dotfill} &
-		Q = \corrr{\versions{569}{707}{545}{2072}}{\dotfill} \tabularnewline
-		R = \corrr{\versions{4}{0}{2}{3}}{\dotfill}            &
-		R = \corrr{\versions{7}{3}{3}{2}}{\dotfill}            &
-		R = \corrr{\versions{2}{1}{4}{1}}{\dotfill}              \\
-		\hline
-		$\versions{8456 : 14}{8327 : 6}{7395 : 13}{11836 : 8}$ &
-		$\versions{13972 : 18}{9105 : 8}{2214 : 5}{14275 : 9}$ &
-		$\versions{28791 : 23}{12034 : 11}{15068 : 14}{33045 : 15}$ \tabularnewline[7.5cm]
-		Q = \corrr{\versions{604}{1387}{568}{1479}}{\dotfill}  &
-		Q = \corrr{\versions{776}{1138}{442}{1586}}{\dotfill}  &
-		Q = \corrr{\versions{1251}{1094}{1076}{2203}}{\dotfill} \tabularnewline
-		R = \corrr{\versions{0}{5}{11}{4}}{\dotfill}           &
-		R = \corrr{\versions{4}{1}{4}{1}}{\dotfill}            &
-		R = \corrr{\versions{18}{0}{4}{0}}{\dotfill}             \\
-	\end{tabular}
-\end{center}
+\ifeabs{
+	\begin{center}
+		\begin{tabular}{>{\centering\arraybackslash}p{0.4\textwidth}|>{\centering\arraybackslash}p{0.4\textwidth}}
+			$777 : 6$  & $9050 : 4$ \tabularnewline[7.5cm]
+			Q = \corrr{129}{\dotfill} & Q = \corrr{2262}{\dotfill} \tabularnewline
+			R = \corrr{3}{\dotfill}   & R = \corrr{2}{\dotfill} \\
+			\hline
+			$11836 : 8$ & $14275 : 9$ \tabularnewline[7.5cm]
+			Q = \corrr{1479}{\dotfill} & Q = \corrr{1586}{\dotfill} \tabularnewline
+			R = \corrr{4}{\dotfill}    & R = \corrr{1}{\dotfill} \\
+		\end{tabular}
+	\end{center}
+}{
+	\begin{center}
+		\begin{tabular}{>{\centering\arraybackslash}p{0.27\textwidth}|>{\centering\arraybackslash}p{0.27\textwidth}|>{\centering\arraybackslash}p{0.27\textwidth}}
+			$\versions{784 : 6}{684 : 4}{563 : 3}{777 : 6}$        &
+			$\versions{9631 : 8}{7123 : 5}{8472 : 9}{9050 : 4}$    &
+			$\versions{5123 : 9}{4950 : 7}{6544 : 12}{6217 : 3}$ \tabularnewline[7.5cm]
+			Q = \corrr{\versions{130}{171}{187}{129}}{\dotfill}    &
+			Q = \corrr{\versions{1203}{1424}{941}{2262}}{\dotfill} &
+			Q = \corrr{\versions{569}{707}{545}{2072}}{\dotfill} \tabularnewline
+			R = \corrr{\versions{4}{0}{2}{3}}{\dotfill}            &
+			R = \corrr{\versions{7}{3}{3}{2}}{\dotfill}            &
+			R = \corrr{\versions{2}{1}{4}{1}}{\dotfill}              \\
+			\hline
+			$\versions{8456 : 14}{8327 : 6}{7395 : 13}{11836 : 8}$ &
+			$\versions{13972 : 18}{9105 : 8}{2214 : 5}{14275 : 9}$ &
+			$\versions{28791 : 23}{12034 : 11}{15068 : 14}{33045 : 15}$ \tabularnewline[7.5cm]
+			Q = \corrr{\versions{604}{1387}{568}{1479}}{\dotfill}  &
+			Q = \corrr{\versions{776}{1138}{442}{1586}}{\dotfill}  &
+			Q = \corrr{\versions{1251}{1094}{1076}{2203}}{\dotfill} \tabularnewline
+			R = \corrr{\versions{0}{5}{11}{4}}{\dotfill}           &
+			R = \corrr{\versions{4}{1}{4}{1}}{\dotfill}            &
+			R = \corrr{\versions{18}{0}{4}{0}}{\dotfill}             \\
+		\end{tabular}
+	\end{center}
+}

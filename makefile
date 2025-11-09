@@ -9,13 +9,17 @@ all: A B C D correctif_A correctif_B correctif_C correctif_D concatenate concate
 A B C D: | build build/$@
 	@echo "Ensuring build/$@ directory exists..."
 	@mkdir -p build/$@
-	pdflatex -output-directory=build/$@ "\def\version{$@} \def\release{$(release)} \input{src/main.tex}" && mv -f build/$@/main.pdf build/$(name)_$(release)_$@.pdf
+	pdflatex -interaction=nonstopmode -output-directory=build/$@ "\def\version{$@} \def\release{$(release)} \input{src/main.tex}" \
+		&& pdflatex -interaction=nonstopmode -output-directory=build/$@ "\def\version{$@} \def\release{$(release)} \input{src/main.tex}" \
+		&& mv -f build/$@/main.pdf build/$(name)_$(release)_$@.pdf
 
 # Compile correctif versions with separate aux file directories under build/corr/
 correctif_A correctif_B correctif_C correctif_D: | build build/corr/$(@:correctif_%=%)
 	@echo "Ensuring build/corr/$(@:correctif_%=%) directory exists..."
 	@mkdir -p build/corr/$(@:correctif_%=%)
-	pdflatex -output-directory=build/corr/$(@:correctif_%=%) "\def\version{$(@:correctif_%=%)} \def\release{$(release)} \def\withanswers{1} \input{src/main.tex}" && mv -f build/corr/$(@:correctif_%=%)/main.pdf build/$(name)_$(release)_$(@:correctif_%=%)_correctif.pdf
+	pdflatex -interaction=nonstopmode -output-directory=build/corr/$(@:correctif_%=%) "\def\version{$(@:correctif_%=%)} \def\release{$(release)} \def\withanswers{1} \input{src/main.tex}" \
+		&& pdflatex -interaction=nonstopmode -output-directory=build/corr/$(@:correctif_%=%) "\def\version{$(@:correctif_%=%)} \def\release{$(release)} \def\withanswers{1} \input{src/main.tex}" \
+		&& mv -f build/corr/$(@:correctif_%=%)/main.pdf build/$(name)_$(release)_$(@:correctif_%=%)_correctif.pdf
 
 # Concatenate regular versions
 concatenate: | build
@@ -42,4 +46,3 @@ build/corr/%:
 clean:
 	rm -rf build/*
 	rm -f *.aux *.log *.nav *.out *.snm *.toc *.fls *.fdb_latexmk
-
